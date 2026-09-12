@@ -3,24 +3,23 @@
 
 @layer base {
   :root {
-    /* warm-gray "blueprint" light theme (matches the README/terminal reference) */
-    --background: 60 5% 96%; /* #f5f5f4 warm gray */
-    --foreground: 240 6% 26%; /* #3f3f46 zinc-700 — headings are dark gray, not black */
-    --card: 0 0% 100%;
-    --card-foreground: 240 6% 26%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 26%;
-    --primary: 240 6% 20%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 60 5% 92%;
-    --secondary-foreground: 240 6% 26%;
-    --muted: 60 5% 92%;
-    --muted-foreground: 240 4% 46%; /* #71717a zinc-500 */
-    --accent: 217 91% 60%; /* #3b82f6 blue-500 — reads well as text/links on the warm-gray canvas */
-    --accent-foreground: 0 0% 100%;
+    --background: 48 33% 96%;
+    --foreground: 160 22% 12%;
+    --card: 45 33% 99%;
+    --card-foreground: 160 22% 12%;
+    --popover: 45 33% 99%;
+    --popover-foreground: 160 22% 12%;
+    --primary: 160 22% 12%;
+    --primary-foreground: 48 33% 96%;
+    --secondary: 44 22% 90%;
+    --secondary-foreground: 160 22% 12%;
+    --muted: 44 22% 90%;
+    --muted-foreground: 160 8% 43%;
+    --accent: 73 100% 48%;
+    --accent-foreground: 160 22% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 24 6% 90%; /* #e7e5e4 stone-200 */
+    --border: 40 13% 82%;
     --input: 24 6% 90%;
     --ring: 217 91% 60%;
     --chart-1: 12 76% 61%;
@@ -28,30 +27,31 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0rem; /* the whole shell is square — see the border-radius reset below */
+    --radius: 1rem;
 
     --font-mono:
       ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code", Menlo,
       Consolas, monospace;
   }
   .dark {
-    --background: 20 14% 4%; /* #0c0a09 near-black warm */
-    --foreground: 0 0% 98%;
-    --card: 240 6% 10%; /* #18181b zinc-900 */
-    --card-foreground: 0 0% 98%;
-    --popover: 240 6% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 6% 10%;
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%; /* #a1a1aa zinc-400 */
-    --accent: 213 94% 68%; /* #60a5fa blue-400 — lifted for contrast on near-black */
+    --background: 160 22% 7%;
+    --foreground: 48 33% 96%;
+    --card: 160 18% 10%;
+    --card-foreground: 48 33% 96%;
+    --popover: 160 18% 10%;
+    --popover-foreground: 48 33% 96%;
+    --primary: 48 33% 96%;
+    --primary-foreground: 160 22% 7%;
+    --secondary: 160 14% 15%;
+    --secondary-foreground: 48 33% 96%;
+    --muted: 160 14% 15%;
+    --muted-foreground: 155 8% 64%;
+    --accent: 73 100% 57%;
+    --accent-foreground: 160 22% 7%;
     --accent-foreground: 240 6% 10%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 4% 16%; /* #27272a zinc-800 */
+    --border: 160 12% 20%;
     --input: 240 4% 16%;
     --ring: 213 94% 68%;
     --chart-1: 220 70% 50%;
@@ -77,15 +77,6 @@
     cursor: pointer;
   }
 
-  /* Square by design: every corner in the UI is sharp. This backstops the
-     utility sweep, so a curve copied in from a snippet or a shadcn primitive
-     can't creep back. The navbar/footer notch is a clip-path, not a
-     border-radius, so it is unaffected. Drop this block to allow curves again. */
-  *,
-  *::before,
-  *::after {
-    border-radius: 0 !important;
-  }
 }
 
 @keyframes theme-in {
@@ -128,6 +119,26 @@
 }
 
 @layer components {
+  .display-type {
+    font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.065em;
+  }
+
+  .grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.12) 0.7px, transparent 0.7px);
+    background-size: 5px 5px;
+  }
+
+  .glow-orb {
+    background: radial-gradient(circle, hsl(var(--accent) / 0.2), transparent 68%);
+    filter: blur(10px);
+  }
+
+  .project-grid {
+    background-image: linear-gradient(hsl(var(--border) / 0.55) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
   .sticky-nav {
     @apply sticky top-0 z-10 backdrop-filter backdrop-saturate-200 backdrop-blur-sm transition ease-in-out;
   }
@@ -161,6 +172,6 @@
   /* borderless mono chip — skill/stack tags. A fill instead of a border reads
      quieter when a dozen of these sit in a row (Skills, Experience, Projects). */
   .chip {
-    @apply bg-muted/60 px-2 py-1 font-mono text-[11px] tracking-wide text-muted-foreground transition-colors;
+    @apply border border-border bg-transparent px-3 py-1.5 font-mono text-[11px] tracking-wide text-muted-foreground transition-colors;
   }
 }

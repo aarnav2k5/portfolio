@@ -12,7 +12,7 @@ const Projects = () => {
   return (
     <div>
       <Title title="Projects" />
-      <div className="border-t border-border">
+      <div className="grid gap-5">
         {featured.map((project, index) => (
           <ProjectCard
             key={project.title}

@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { GitHubIcon } from "@/components/ui/brand-icons";
 
@@ -9,87 +9,51 @@ interface Props {
   tags: string[];
   liveHref?: string;
   codeHref?: string;
-  /**
-   * 0-based position in the list, printed as the sheet number. Optional, and
-   * when it is absent the number is simply not drawn.
-   */
   index?: number;
 }
 
-/**
- * A project printed as one entry in a numbered list with hover corner accents.
- */
-export default function ProjectCard({
-  title,
-  tagline,
-  description,
-  tags,
-  liveHref,
-  codeHref,
-  index,
-}: Props) {
-  const sheet =
-    typeof index === "number" ? String(index + 1).padStart(2, "0") : null;
+const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, index }: Props) => {
+  const number = typeof index === "number" ? String(index + 1).padStart(2, "0") : "00";
 
   return (
-    <div className="group relative border-b border-border/70 p-5 transition-colors hover:bg-muted/15 last:border-b-0">
-      {/* All four hover corner borders for Project card */}
-      <span aria-hidden className="pointer-events-none absolute top-0 left-0 size-3 border-t-2 border-l-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-      <span aria-hidden className="pointer-events-none absolute top-0 right-0 size-3 border-t-2 border-r-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-      <span aria-hidden className="pointer-events-none absolute bottom-0 left-0 size-3 border-b-2 border-l-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-      <span aria-hidden className="pointer-events-none absolute bottom-0 right-0 size-3 border-b-2 border-r-2 border-accent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5">
-        <div className="flex items-baseline gap-3">
-          {sheet && (
-            <span className="font-mono text-xs text-accent tabular-nums">
-              {sheet}
-            </span>
-          )}
-          <h4 className="text-lg font-bold tracking-tight text-foreground">
-            {title}
-          </h4>
+    <article className="group grid overflow-hidden border border-border/70 bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-[8px_8px_0_hsl(var(--accent)/0.8)] sm:grid-cols-[0.32fr_1fr]">
+      <div className="project-grid relative flex min-h-44 flex-col justify-between overflow-hidden bg-accent p-5 text-accent-foreground sm:min-h-full">
+        <div className="flex items-start justify-between font-mono text-xs font-bold">
+          <span>{number}</span>
+          <span>WEB / BUILD</span>
         </div>
+        <div className="relative mt-12">
+          <div className="absolute -right-4 -bottom-10 size-28 rounded-full border-16 border-accent-foreground/15 transition-transform duration-500 group-hover:scale-125" />
+          <ArrowUpRight className="size-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" />
+        </div>
+      </div>
 
-        {(liveHref || codeHref) && (
-          <div className="flex items-center gap-3">
+      <div className="p-6 sm:p-8">
+        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
+          <div>
+            <p className="font-mono text-xs tracking-[0.12em] text-accent uppercase">{tagline}</p>
+            <h4 className="mt-2 text-3xl font-black tracking-tight text-foreground">{title}</h4>
+          </div>
+          <div className="flex shrink-0 gap-3">
             {liveHref && (
-              <a
-                href={liveHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition hover:text-accent"
-              >
-                <ExternalLink className="size-3.5 text-accent transition group-hover/link:scale-110" />
-                <span>Live</span>
+              <a href={liveHref} target="_blank" rel="noopener noreferrer" aria-label={`${title} live site`} className="group/link grid size-9 place-items-center border border-border text-muted-foreground hover:border-accent hover:text-accent">
+                <ExternalLink className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
               </a>
             )}
             {codeHref && (
-              <a
-                href={codeHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/link inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition hover:text-accent"
-              >
-                <GitHubIcon className="size-3.5 text-foreground transition group-hover/link:scale-110 group-hover/link:text-accent" />
-                <span>Code</span>
+              <a href={codeHref} target="_blank" rel="noopener noreferrer" aria-label={`${title} GitHub code`} className="group/link grid size-9 place-items-center border border-border text-muted-foreground hover:border-accent hover:text-accent">
+                <GitHubIcon className="size-4 transition-transform group-hover/link:scale-110" />
               </a>
             )}
           </div>
-        )}
+        </div>
+        <p className="mt-5 max-w-2xl text-sm/6 text-muted-foreground">{description}</p>
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {tags.map((tag) => <li key={tag} className="border border-border px-2.5 py-1 font-mono text-[10px] tracking-wide text-muted-foreground">{tag}</li>)}
+        </ul>
       </div>
-
-      <p className="mt-1.5 font-mono text-xs text-accent">{tagline}</p>
-
-      <p className="mt-3 text-sm/6 text-muted-foreground">{description}</p>
-
-      <ul className="mt-4 flex flex-wrap gap-1.5">
-        {tags.map((tag) => (
-          <li key={tag} className="chip">
-            {tag}
-          </li>
-        ))}
-      </ul>
-    </div>
+    </article>
   );
-}
+};
+
+export default ProjectCard;
