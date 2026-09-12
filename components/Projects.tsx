@@ -23,6 +23,7 @@ const Projects = () => {
             tags={project.tags}
             liveHref={project.liveHref}
             codeHref={project.codeHref}
+            preview={project.preview}
           />
         ))}
       </div>

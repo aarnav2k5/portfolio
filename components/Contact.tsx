@@ -5,11 +5,11 @@ import { Socials } from "@/constants";
 
 function Contact() {
   return (
-    <div id="contact" data-section="Contact" className="relative mt-24 scroll-mt-28 overflow-hidden bg-foreground p-8 text-background sm:p-12">
+    <div id="contact" data-section="Contact" className="contact-panel relative mt-24 scroll-mt-28 overflow-hidden p-8 sm:p-12">
       <div className="pointer-events-none absolute -right-16 -bottom-24 size-72 rounded-full border-40 border-accent/30" aria-hidden />
       <p className="relative font-mono text-xs tracking-widest text-accent uppercase">{"// open channel"}</p>
       <h2 className="relative mt-3 max-w-xl text-4xl font-black tracking-tight sm:text-6xl">Let&apos;s build something useful.</h2>
-      <p className="relative mt-5 max-w-xl text-background/70">
+      <p className="contact-panel-muted relative mt-5 max-w-xl">
         I&apos;m open to internship, collaboration, and full-stack opportunities.
         Reach out through any of the links below.
       </p>
@@ -21,7 +21,7 @@ function Contact() {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 border border-background/20 px-4 py-2.5 text-sm font-medium text-background transition hover:border-accent hover:text-accent"
+            className="group inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-sm font-medium text-white transition hover:border-accent hover:text-accent"
           >
             <s.icon className="size-4" />
             {s.name}

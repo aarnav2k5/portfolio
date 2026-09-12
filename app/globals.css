@@ -134,6 +134,15 @@
     filter: blur(10px);
   }
 
+  .contact-panel {
+    background: hsl(160 22% 7%);
+    color: hsl(48 33% 96%);
+  }
+
+  .contact-panel-muted {
+    color: hsl(48 20% 78%);
+  }
+
   .project-grid {
     background-image: linear-gradient(hsl(var(--border) / 0.55) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.55) 1px, transparent 1px);
     background-size: 28px 28px;

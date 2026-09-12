@@ -119,6 +119,7 @@ export interface ProjectEntry {
   description: string;
   liveHref?: string;
   codeHref?: string;
+  preview?: "library" | "civic";
   tags: string[];
   category: "AI" | "Web";
 }
@@ -131,6 +132,7 @@ export const Projects: ProjectEntry[] = [
     tags: ["Next.js", "TypeScript", "React", "Supabase", "Docker", "Tailwind CSS"],
     codeHref: "https://github.com/aarnav2k5/gurukul",
     liveHref: "https://lms-hqzf.onrender.com/",
+    preview: "library",
     category: "Web",
   },
   {
@@ -140,6 +142,7 @@ export const Projects: ProjectEntry[] = [
     tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "shadcn/ui"],
     codeHref: "https://github.com/aarnav2k5/civic-report",
     liveHref: "https://civic-report-five.vercel.app/",
+    preview: "civic",
     category: "Web",
   },
 ];

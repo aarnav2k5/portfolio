@@ -9,10 +9,47 @@ interface Props {
   tags: string[];
   liveHref?: string;
   codeHref?: string;
+  preview?: "library" | "civic";
   index?: number;
 }
 
-const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, index }: Props) => {
+const Preview = ({ type }: { type?: "library" | "civic" }) => {
+  if (type === "civic") {
+    return (
+      <div className="mt-8 border border-accent-foreground/20 bg-accent-foreground/10 p-3 text-[8px]">
+        <div className="mb-3 flex items-center justify-between border-b border-accent-foreground/20 pb-2 font-mono uppercase">
+          <span>civic report</span><span>● live</span>
+        </div>
+        <div className="grid grid-cols-[1.2fr_0.8fr] gap-2">
+          <div className="project-grid min-h-20 border border-accent-foreground/20 p-2">
+            <div className="mt-5 ml-7 size-2 rounded-full bg-accent-foreground shadow-[10px_-8px_0_2px_hsl(var(--accent-foreground)/0.45),-12px_10px_0_1px_hsl(var(--accent-foreground)/0.35)]" />
+          </div>
+          <div className="space-y-2">
+            <div className="h-8 border border-accent-foreground/20 bg-accent-foreground/10" />
+            <div className="h-8 border border-accent-foreground/20 bg-accent-foreground/10" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-8 border border-accent-foreground/20 bg-accent-foreground/10 p-3 text-[8px]">
+      <div className="mb-3 flex items-center justify-between border-b border-accent-foreground/20 pb-2 font-mono uppercase">
+        <span>gurukul library</span><span>teacher view</span>
+      </div>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="col-span-2 h-8 border border-accent-foreground/20 bg-accent-foreground/10" />
+        <div className="h-8 border border-accent-foreground/20 bg-accent-foreground/10" />
+        {["notes", "papers", "samples", "marks"].map((label) => (
+          <div key={label} className="border border-accent-foreground/20 p-2 font-mono uppercase">{label}</div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, preview, index }: Props) => {
   const number = typeof index === "number" ? String(index + 1).padStart(2, "0") : "00";
 
   return (
@@ -22,9 +59,9 @@ const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, in
           <span>{number}</span>
           <span>WEB / BUILD</span>
         </div>
-        <div className="relative mt-12">
-          <div className="absolute -right-4 -bottom-10 size-28 rounded-full border-16 border-accent-foreground/15 transition-transform duration-500 group-hover:scale-125" />
-          <ArrowUpRight className="size-10 transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" />
+        <div className="relative">
+          <Preview type={preview} />
+          <ArrowUpRight className="mt-5 size-8 transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" />
         </div>
       </div>
 
