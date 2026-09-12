@@ -1,4 +1,7 @@
+import Image from "next/image";
 import React from "react";
+
+import { Site } from "@/constants";
 
 const activity = [
   "00110100111001001110",
@@ -15,7 +18,15 @@ const BuildActivity = () => {
     <section className="mt-6 overflow-hidden border border-border/70 bg-card" aria-label="Build activity">
       <div className="grid lg:grid-cols-[220px_1fr]">
         <div className="border-b border-border/70 p-5 lg:border-r lg:border-b-0">
-          <p className="font-mono text-[10px] tracking-[0.2em] text-accent uppercase">build rhythm</p>
+          <div className="flex items-center gap-3">
+            <div className="relative size-14 shrink-0 overflow-hidden border border-accent bg-muted">
+              <Image src={Site.avatar} alt={`${Site.name} 8-bit avatar`} fill sizes="56px" className="object-cover" />
+            </div>
+            <div>
+              <p className="font-mono text-[10px] tracking-[0.2em] text-accent uppercase">build rhythm</p>
+              <p className="mt-1 text-sm font-semibold text-foreground">Aarnav / online</p>
+            </div>
+          </div>
           <p className="mt-5 text-sm/6 text-muted-foreground">A small snapshot of the things I keep returning to: shipping, learning, and making interfaces clearer.</p>
           <div className="mt-8 grid grid-cols-3 gap-3 lg:grid-cols-1 lg:gap-5">
             <div><p className="text-2xl font-black text-foreground">02</p><p className="font-mono text-[9px] text-muted-foreground uppercase">projects</p></div>
