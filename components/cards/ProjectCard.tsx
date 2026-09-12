@@ -53,7 +53,7 @@ const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, pr
   const number = typeof index === "number" ? String(index + 1).padStart(2, "0") : "00";
 
   return (
-    <article className="group grid overflow-hidden border border-border/70 bg-card transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-[8px_8px_0_hsl(var(--accent)/0.8)] sm:grid-cols-[0.32fr_1fr]">
+    <article className="project-card group grid overflow-hidden border border-border/70 bg-card hover:border-accent/70 hover:shadow-[8px_8px_0_hsl(var(--accent)/0.8)] sm:grid-cols-[0.32fr_1fr]">
       <div className="project-grid relative flex min-h-44 flex-col justify-between overflow-hidden bg-accent p-5 text-accent-foreground sm:min-h-full">
         <div className="flex items-start justify-between font-mono text-xs font-bold">
           <span>{number}</span>

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Links, Site } from "@/constants";
 
+import ScrollProgress from "./ScrollProgress";
 import CommandBar from "./shell/CommandBar";
 import ThemeToggle from "./shell/ThemeToggle";
 
@@ -12,7 +13,8 @@ const StudioNavbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+    <header className="studio-nav sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-xl">
+      <ScrollProgress />
       <div className="mx-auto flex h-18 w-full max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
         <Link href="/" className="group flex items-center gap-3" aria-label={`${Site.name} home`}>
           <span className="grid size-9 place-items-center bg-accent font-black tracking-tighter text-accent-foreground transition-transform group-hover:-rotate-6">

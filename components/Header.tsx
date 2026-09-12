@@ -7,7 +7,7 @@ const Header = () => {
   const email = Socials.find((social) => social.name === "Email")?.url ?? "#";
 
   return (
-    <section className="relative overflow-hidden border border-border/70 bg-card px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
+    <section className="hero-panel relative overflow-hidden border border-border/70 bg-card px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
       <div className="glow-orb pointer-events-none absolute -top-40 -right-24 size-96" aria-hidden />
       <div className="grain pointer-events-none absolute inset-0 opacity-20" aria-hidden />
 

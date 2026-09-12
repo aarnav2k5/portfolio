@@ -105,6 +105,15 @@ The shell is full-width, uses a centered `max-w-7xl` content frame, and avoids a
 - Theme switching remains available, but both themes use the same forest/lime identity.
 - Keyboard access remains supported through the command palette and semantic links/buttons.
 
+### Motion system
+
+- The navbar enters with a short downward reveal on first load.
+- The hero heading rises into place after the page shell appears.
+- Main sections reveal once as they enter the viewport using `IntersectionObserver`.
+- Featured project cards reveal with a small stagger and lift on hover.
+- A lime scroll-progress line tracks reading position beneath the navbar.
+- `prefers-reduced-motion: reduce` disables decorative movement and reveals content immediately.
+
 ## 6. Content architecture
 
 The visual system is data-driven from `constants/index.ts`:

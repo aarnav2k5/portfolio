@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.1 - 2026-09-12
+
+### Added
+
+- Added staged hero entrance, scroll-triggered section reveals, project hover lifts, and a scroll progress indicator.
+- Added reduced-motion support for users who prefer less animation.
+
 ## 3.0.0 - 2026-09-12
 
 ### Changed
