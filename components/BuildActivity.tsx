@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
@@ -44,7 +47,15 @@ const BuildActivity = () => {
             {activity.map((row, rowIndex) => (
               <div key={`${row}-${rowIndex}`} className="flex gap-1.5">
                 {[...row].map((value, columnIndex) => (
-                  <span key={`${rowIndex}-${columnIndex}`} className={`aspect-square min-w-0 flex-1 ${value === "1" ? columnIndex % 3 === 0 ? "bg-accent" : "bg-accent/45" : "bg-foreground/10"}`} />
+                  <motion.span
+                    key={`${rowIndex}-${columnIndex}`}
+                    className={`activity-cell aspect-square min-w-0 flex-1 ${value === "1" ? columnIndex % 3 === 0 ? "bg-accent" : "bg-accent/45" : "bg-foreground/10"}`}
+                    initial={{ opacity: 0, scale: 0.2, rotate: -12 }}
+                    whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                    viewport={{ once: true, amount: 0.8 }}
+                    transition={{ delay: (rowIndex * 20 + columnIndex) * 0.012, type: "spring", stiffness: 260, damping: 18 }}
+                    whileHover={{ scale: 1.8, zIndex: 2 }}
+                  />
                 ))}
               </div>
             ))}

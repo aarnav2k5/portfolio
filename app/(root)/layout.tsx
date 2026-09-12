@@ -1,3 +1,4 @@
+import { MotionConfig } from "framer-motion";
 import React from "react";
 
 import StudioFooter from "@/components/StudioFooter";
@@ -10,11 +11,13 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <StudioNavbar />
-      <main id="skip" className="mx-auto w-full max-w-7xl grow px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        {children}
-      </main>
-      <StudioFooter />
+      <MotionConfig reducedMotion="user">
+        <StudioNavbar />
+        <main id="skip" className="mx-auto w-full max-w-7xl grow px-5 py-12 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+          {children}
+        </main>
+        <StudioFooter />
+      </MotionConfig>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 import { GitHubIcon } from "@/components/ui/brand-icons";
@@ -53,15 +56,26 @@ const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, pr
   const number = typeof index === "number" ? String(index + 1).padStart(2, "0") : "00";
 
   return (
-    <article className="project-card group grid overflow-hidden border border-border/70 bg-card hover:border-accent/70 hover:shadow-[8px_8px_0_hsl(var(--accent)/0.8)] sm:grid-cols-[0.32fr_1fr]">
+    <motion.article
+      className="project-card group grid overflow-hidden border border-border/70 bg-card hover:border-accent/70 hover:shadow-[8px_8px_0_hsl(var(--accent)/0.8)] sm:grid-cols-[0.32fr_1fr]"
+      layout
+      whileHover={{ y: -10, rotateX: 1.5, rotateY: -1.5, scale: 1.01 }}
+      whileTap={{ scale: 0.985 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      style={{ transformPerspective: 1000 }}
+    >
       <div className="project-grid relative flex min-h-44 flex-col justify-between overflow-hidden bg-accent p-5 text-accent-foreground sm:min-h-full">
         <div className="flex items-start justify-between font-mono text-xs font-bold">
           <span>{number}</span>
           <span>WEB / BUILD</span>
         </div>
         <div className="relative">
-          <Preview type={preview} />
-          <ArrowUpRight className="mt-5 size-8 transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-2" />
+          <motion.div whileHover={{ scale: 1.04, rotate: -1 }} transition={{ type: "spring", stiffness: 240, damping: 14 }}>
+            <Preview type={preview} />
+          </motion.div>
+          <motion.div className="mt-5" animate={{ x: [0, 4, 0], y: [0, -4, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
+            <ArrowUpRight className="size-8" />
+          </motion.div>
         </div>
       </div>
 
@@ -89,7 +103,7 @@ const ProjectCard = ({ title, tagline, description, tags, liveHref, codeHref, pr
           {tags.map((tag) => <li key={tag} className="border border-border px-2.5 py-1 font-mono text-[10px] tracking-wide text-muted-foreground">{tag}</li>)}
         </ul>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

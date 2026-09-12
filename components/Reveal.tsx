@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const Reveal = ({
@@ -31,13 +32,19 @@ const Reveal = ({
   }, []);
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className}`}
-      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      className={`reveal ${className}`}
+      initial={{ opacity: 0, y: 42, filter: "blur(8px)" }}
+      animate={visible ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
+      transition={{
+        duration: 0.9,
+        delay: delay / 1000,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

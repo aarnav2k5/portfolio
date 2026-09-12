@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react";
 import Link from "next/link";
 
@@ -8,7 +11,12 @@ const Header = () => {
 
   return (
     <section className="hero-panel relative overflow-hidden border border-border/70 bg-card px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-20">
-      <div className="glow-orb pointer-events-none absolute -top-40 -right-24 size-96" aria-hidden />
+      <motion.div
+        className="glow-orb pointer-events-none absolute -top-40 -right-24 size-96"
+        animate={{ scale: [1, 1.18, 1], x: [0, -18, 0], y: [0, 16, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden
+      />
       <div className="grain pointer-events-none absolute inset-0 opacity-20" aria-hidden />
 
       <div className="relative grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -18,18 +26,18 @@ const Header = () => {
             Aarnav Jaiswal / portfolio 2026
           </div>
           <h1 className="display-type max-w-4xl text-6xl font-black leading-[0.88] text-foreground sm:text-8xl lg:text-[9.5rem]">
-            Building
-            <span className="block text-accent">useful</span>
-            things.
+            <motion.span className="block" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15, type: "spring", stiffness: 80, damping: 16 }}>Building</motion.span>
+            <motion.span className="block text-accent" initial={{ opacity: 0, x: -70 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.28, type: "spring", stiffness: 80, damping: 16 }}>useful</motion.span>
+            <motion.span className="block" initial={{ opacity: 0, x: -90 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.41, type: "spring", stiffness: 80, damping: 16 }}>things.</motion.span>
           </h1>
         </div>
 
         <div className="max-w-md lg:justify-self-end">
-          <p className="text-xl/8 text-foreground sm:text-2xl/9">
+          <motion.p className="text-xl/8 text-foreground sm:text-2xl/9" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55, duration: 0.8 }}>
             I&apos;m <span className="font-semibold">{Site.name}</span>, a {Site.role.toLowerCase()} and CSIT student turning messy problems into clear, usable products.
-          </p>
-          <p className="mt-5 text-sm/6 text-muted-foreground">{Site.bio}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          </motion.p>
+          <motion.p className="mt-5 text-sm/6 text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.75, duration: 0.9 }}>{Site.bio}</motion.p>
+          <motion.div className="mt-8 flex flex-wrap gap-3" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, type: "spring", stiffness: 100 }}>
             <a href={email} className="group inline-flex items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-1">
               Let&apos;s talk <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
@@ -38,7 +46,7 @@ const Header = () => {
                 <Download className="size-4" /> Résumé
               </a>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
 

@@ -1,9 +1,11 @@
 "use client";
 
+import { motion, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
+  const smoothProgress = useSpring(progress, { stiffness: 120, damping: 24, mass: 0.35 });
 
   useEffect(() => {
     const update = () => {
@@ -19,7 +21,7 @@ const ScrollProgress = () => {
     };
   }, []);
 
-  return <span className="scroll-progress" style={{ transform: `scaleX(${progress / 100})` }} aria-hidden />;
+  return <motion.span className="scroll-progress" style={{ scaleX: smoothProgress }} aria-hidden />;
 };
 
 export default ScrollProgress;
