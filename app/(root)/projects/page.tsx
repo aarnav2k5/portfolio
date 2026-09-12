@@ -10,7 +10,7 @@ import Hatch from "@/components/shell/Hatch";
 import { Projects as ProjectData } from "@/constants";
 
 const description =
-  "Full-stack projects by Soham Maury — an AI-powered restaurant SaaS, a piano lesson manager, an LMS, and a hotel management platform. Built with Next.js, TypeScript, Prisma and the Vercel AI SDK.";
+  "Full-stack projects by Aarnav Jaiswal — student-built web products using Next.js, TypeScript, React, Supabase, and Tailwind CSS.";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -33,13 +33,13 @@ const Projects = () => {
           Projects
         </h1>
         <p className="mt-4 max-w-xl leading-7 text-muted-foreground">
-          I&apos;ve built many projects — some for work, some for fun. The best
-          ones are here.{" "}
+          I&apos;ve built these projects while learning and exploring full-stack
+          development. The best ones are here.{" "}
           <Link
-            href="https://www.github.com/itzsoham"
+            href="https://github.com/aarnav2k5"
             className="font-semibold text-accent hover:underline"
           >
-            Checkout all my projects
+            Check out all my projects
           </Link>{" "}
           while you&apos;re here. Most are deployed and working.
         </p>
@@ -52,7 +52,7 @@ const Projects = () => {
       <ProjectsExplorer projects={ProjectData} />
 
       <a
-        href="https://github.com/itzsoham"
+        href="https://github.com/aarnav2k5"
         target="_blank"
         rel="noopener noreferrer"
         className="group mx-auto my-8 flex items-center justify-center gap-1.5 border border-border bg-card px-4 py-2 font-mono text-sm text-muted-foreground transition hover:border-accent/40 hover:text-foreground"

@@ -17,16 +17,8 @@ function Contact() {
         Let&apos;s build something.
       </h2>
       <p className="mt-3 max-w-xl text-muted-foreground">
-        Ping me{" "}
-        <a
-          className="font-semibold text-accent hover:underline"
-          href="https://x.com/sohammaury"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          with a direct on twitter
-        </a>{" "}
-        and I&apos;ll respond whenever I can. Here are some of my links.
+        I&apos;m open to internship, collaboration, and full-stack opportunities.
+        Reach out through any of the links below.
       </p>
 
       <div className="mt-5 flex flex-wrap gap-2">

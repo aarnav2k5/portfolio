@@ -1,12 +1,13 @@
 import React from "react";
 
+import Achievements from "@/components/Achievements";
 import Contact from "@/components/Contact";
-import Experience from "@/components/Experience";
+import Education from "@/components/Education";
 import Header from "@/components/Header";
 import Projects from "@/components/Projects";
 import Hatch from "@/components/shell/Hatch";
 import Skill from "@/components/Skill";
-import TypingTest from "@/components/TypingTest";
+import Snapshot from "@/components/Snapshot";
 
 const Root = () => {
   return (
@@ -17,13 +18,11 @@ const Root = () => {
         <Hatch />
       </div>
 
+      <Snapshot />
       <Skill />
-      <Experience />
+      <Education />
       <Projects />
-
-      <div className="mt-12">
-        <TypingTest />
-      </div>
+      <Achievements />
 
       <Contact />
     </div>

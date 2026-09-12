@@ -15,7 +15,7 @@ const OpenSans = localFont({
 });
 
 const description =
-  "Soham Maury is a full-stack developer building seamless web apps — intuitive interfaces on the front, scalable back-ends behind them. React, Next.js, Node.js, Postgres, Supabase, AWS.";
+  "Aarnav Jaiswal is a final-year CSIT student building full-stack web products with React, Next.js, Node.js, Express, PostgreSQL, and MongoDB.";
 
 export const metadata: Metadata = {
   // every relative URL below (canonical, OG image, sitemap) resolves against this
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "Next.js developer",
     "Node.js",
     "portfolio",
-    "Ahmedabad",
+    "Noida",
     "India",
     ...Skills,
   ],
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${Site.name} — ${Site.role}`,
     description,
-    creator: "@sohammaury",
+    creator: "@aarnav2k5",
   },
   robots: {
     index: true,
@@ -91,10 +91,10 @@ const jsonLd = {
       image: `${Site.url}${Site.avatar}`,
       jobTitle: Site.role,
       description: Site.bio,
-      email: "sohammaury@gmail.com",
+      email: "jaiswalaarnav@gmail.com",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Ahmedabad",
+        addressLocality: "Noida",
         addressCountry: "IN",
       },
       worksFor: Experience.map((e) => ({

@@ -1,7 +1,7 @@
-import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import Image from "next/image";
 
-import { Experience, Site, Socials } from "@/constants";
+import { Site, Socials } from "@/constants";
 import { cn } from "@/lib/utils";
 
 /**
@@ -34,7 +34,6 @@ const StatusCard = ({
   /** lets the hero's inline copy join the entrance stagger at the right beat */
   style?: React.CSSProperties;
 }) => {
-  const current = Experience[0];
   const email = Socials.find((s) => s.name === "Email")?.url ?? "#";
 
   return (
@@ -79,20 +78,7 @@ const StatusCard = ({
 
         <Row label="based">{Site.location}</Row>
 
-        {current && (
-          <Row label="now">
-            <a
-              href={current.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group hover:text-accent"
-            >
-              {current.company}
-              <ArrowUpRight className="mx-1 inline size-3 align-middle text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-              <span className="text-muted-foreground">· {current.start}</span>
-            </a>
-          </Row>
-        )}
+        <Row label="focus">building full-stack projects</Row>
       </div>
 
       {/* the ask — reachable at every scroll depth, not just at the two ends */}

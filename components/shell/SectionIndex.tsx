@@ -8,9 +8,6 @@ import { cn } from "@/lib/utils";
 
 type Section = { id: string; label: string };
 
-/** a section counts as "current" once its heading passes this line */
-const LINE = 140;
-
 /**
  * Index of the sections on the current page — scanned from the DOM (anything
  * carrying `data-section`, which `ui/Title` and the contact block set), so it
