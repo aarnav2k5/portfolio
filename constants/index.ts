@@ -30,7 +30,7 @@ export const Site = {
   stack: ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "MongoDB"],
   resume: "/aarnav-jaiswal-resume.pdf" as string | null,
   visitorCount: 1,
-  avatar: "/avatar7.png",
+  avatar: "/8bit-photo.png",
   builtWith: ["Next.js", "Tailwind", "Supabase"],
 };
 
@@ -80,7 +80,7 @@ export const Education: EducationEntry[] = [
   {
     institution: "KIET Group of Institutions",
     location: "Ghaziabad, India",
-    program: "B.Tech in Computer Science and Information Technology · CGPA: 6.8/10",
+    program: "B.Tech in Computer Science and Information Technology (CSIT)",
     period: "Oct 2023 – Oct 2027",
     details: "Coursework: Data Structures & Algorithms, OOP, Databases, Operating Systems, Computer Networks",
   },
