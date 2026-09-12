@@ -1,21 +1,29 @@
 # Aarnav Jaiswal — Portfolio
 
-Aarnav Jaiswal's personal portfolio — a full-stack student portfolio focused on shipped projects, education, and open-source learning.
+Personal portfolio for Aarnav Jaiswal, a final-year Computer Science and Information Technology student building full-stack web products with React, Next.js, Node.js, Express, PostgreSQL, MongoDB, and Supabase.
+
+The current site is an original “build lab” interface: editorial typography, forest-green surfaces, acid-lime accents, project showcase cards, and a compact navigation bar. It is intentionally separate from the original cloned README/terminal design.
 
 ## Features
 
-- **Command palette** (`⌘K` / `Ctrl-K`) — jump to any page, open any social link, or toggle the theme without touching the mouse ([components/shell/CommandBar.tsx](components/shell/CommandBar.tsx))
-- **Light/dark theme**, system-aware, with a clip-path curtain transition instead of a cross-fade ([context/Theme.tsx](context/Theme.tsx))
-- **Experience timeline**, **filterable project list** (category tabs derived from the data itself, not hardcoded), and grouped skill chips
-- **Real visitor counter** in the footer, backed by Redis, with a static fallback when it isn't configured
-- A static typing-test widget and a section-index rail — see [DESIGN.md](DESIGN.md) for the full design spec and the reasoning behind each piece
+- Split hero with availability status, résumé download, and direct contact CTA.
+- Portfolio snapshot covering shipped projects, algorithm practice, and graduation target.
+- Education, skills, achievements, and selected project sections populated from Aarnav’s résumé.
+- Project cards with live-site and GitHub links.
+- Dedicated `/projects` page with project filtering.
+- Responsive dark/light theme with a command palette and keyboard shortcut support.
+- 8-bit profile image served from `/public/8bit-photo.png`.
+- Optional Upstash Redis visitor counter and Vercel Analytics.
+- Defensive site URL handling so an empty `NEXT_PUBLIC_SITE_URL` cannot break a Vercel build.
 
 ## Stack
 
-- [Next.js 16](https://nextjs.org) (App Router, Turbopack dev), React 19, TypeScript
+- Next.js 16 App Router and Turbopack
+- React 19 and TypeScript
 - Tailwind CSS v4
-- [Upstash Redis](https://upstash.com) — visitor counter (optional)
-- Vercel Analytics + Vercel deployment
+- Framer Motion
+- Upstash Redis (optional visitor counter)
+- Vercel Analytics
 
 ## Getting started
 
@@ -26,69 +34,84 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-| Script          | Does                       |
-| --------------- | -------------------------- |
-| `npm run dev`   | Dev server with Turbopack  |
-| `npm run build` | Production build           |
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create a production build |
 | `npm run start` | Serve the production build |
-| `npm run lint`  | ESLint                     |
+| `npm run lint` | Run ESLint |
 
 ## Project structure
 
-```
+```text
 app/
-  layout.tsx              root layout — fonts, metadata, JSON-LD, ThemeProvider
-  (root)/
-    layout.tsx             page shell — notch navbar, sidebar, footer
-    page.tsx                home: hero, projects, experience, skills, typing test
-    projects/page.tsx       full project list with category filter tabs
-    resources/page.tsx      curated links (Notion docs, learning tracks, etc.)
-    etc/page.tsx            unlisted placeholder (noindex)
-  api/visits/route.ts       visitor-counter endpoint (Redis incr)
-  sitemap.ts, robots.ts, opengraph-image.tsx, twitter-image.tsx
+  layout.tsx                 root metadata, JSON-LD, theme provider
+  (root)/layout.tsx          studio navbar, content shell, studio footer
+  (root)/page.tsx            home page composition
+  (root)/projects/page.tsx   full project list and filters
+  (root)/resources/page.tsx  optional resources page
+  api/visits/route.ts        optional Redis visitor counter
+  globals.css                design tokens and visual utilities
 
 components/
-  Header.tsx, About.tsx, Experience.tsx, Projects.tsx, Skill.tsx, Contact.tsx
-  cards/                   ExperienceRow, ProjectCard, ResourcesCard
-  shell/                   NotchNavbar, CommandBar, Sidebar, StatusCard,
-                            SectionIndex, Breadcrumb, Footer, ThemeToggle, Hatch
-  navbar/, ui/              nav primitives, shadcn-derived UI primitives
+  Header.tsx                 split editorial hero
+  Snapshot.tsx               portfolio proof strip
+  Education.tsx              education timeline
+  Achievements.tsx           activities and achievements
+  Projects.tsx               selected work section
+  StudioNavbar.tsx           primary navigation and availability status
+  StudioFooter.tsx           contact-oriented footer
+  cards/ProjectCard.tsx      project showcase card
 
-constants/index.ts          all site content — see below
-context/Theme.tsx           next-themes provider wrapper
-lib/utils.ts                 cn() helper
+constants/index.ts           personal content, links, skills, projects, metadata
+public/8bit-photo.png        profile image
+public/aarnav-jaiswal-resume.pdf
 ```
 
 ## Editing content
 
-Everything you'd normally go hunting across pages for — name, bio, socials, nav links, skills, experience, projects, resources — lives in **[constants/index.ts](constants/index.ts)**. The components just map over it:
+Most personal content lives in [constants/index.ts](constants/index.ts):
 
-- `Site` — identity, tagline, location, résumé path, footer visitor-count fallback
-- `Socials` / `Links` — social icons+URLs, nav entries
-- `Experience: ExperienceEntry[]` — one entry per role (`company`, `title`, `start`/`end`, `description`, `bullets`, `tags`)
-- `SkillGroups: SkillGroup[]` — labeled skill clusters (`Skills` is the flattened list, used for SEO keywords/JSON-LD)
-- `Projects: ProjectEntry[]` — `tagline`, `description`, `tags`, `category` (drives the filter tabs on `/projects`), optional `liveHref`/`codeHref`
-- `Resources` — curated external links shown on `/resources`
+- `Site` — name, role, tagline, location, résumé path, avatar, and site URL fallback.
+- `Socials` — GitHub, LinkedIn, email, and phone links.
+- `SkillGroups` — grouped technical skills.
+- `Education` — academic history.
+- `Achievements` — activities and accomplishments.
+- `Projects` — live links, GitHub links, descriptions, tags, and categories.
 
-Drop a résumé PDF in `/public` and set `Site.resume` to its path to light up the Résumé buttons in the hero and sidebar.
+Replace `/public/8bit-photo.png` when you want to use a different profile image. Keep the same filename or update `Site.avatar`.
 
 ## Environment variables
 
-Copy `.env.example` to `.env.local`. Everything is optional — the site runs fine with none of it set:
+Copy `.env.example` to `.env.local` when needed:
 
-| Variable                                              | Required for                     | Fallback if unset                                                 |
-| ----------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`                                | canonical URLs, OG tags, sitemap | Set this to your Vercel URL in deployment settings |
-| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | real visitor counter             | static `Site.visitorCount` number in the footer                   |
+```bash
+cp .env.example .env.local
+```
 
-### Wiring up the visitor counter
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, Open Graph metadata, and JSON-LD. Use a complete URL including `https://`. |
+| `UPSTASH_REDIS_REST_URL` | Optional Redis endpoint for the visitor counter. |
+| `UPSTASH_REDIS_REST_TOKEN` | Optional Redis token for the visitor counter. |
 
-1. Vercel dashboard → **Storage → Marketplace → connect a Redis integration (Upstash)** to the project. This injects `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` automatically.
-2. Locally: `vercel env pull .env.local` to pull the same vars down.
-3. Done — `app/api/visits/route.ts` increments and returns the count on each request; the footer fetches it client-side on mount.
+An unset or empty `NEXT_PUBLIC_SITE_URL` falls back safely during local builds. Set the real production URL in Vercel for correct SEO metadata.
 
-It's a raw hit counter (every page load bumps it), not de-duped per unique visitor — intentional, in keeping with the "you are the Nth visitor" webring-counter joke in the footer copy.
+## Deploying to Vercel
 
-## Deployment
+1. Push this repository to your own GitHub account.
+2. Import the repository at [vercel.com/new](https://vercel.com/new).
+3. Keep the framework as Next.js and the build command as `npm run build`.
+4. Add `NEXT_PUBLIC_SITE_URL` for Production, Preview, and Development. For example:
 
-Deploys on [Vercel](https://vercel.com/new). Connect the Upstash integration there too if you want the real counter in production; without it, the footer just shows the static fallback.
+   ```text
+   NEXT_PUBLIC_SITE_URL=https://aarnav2k5.vercel.app
+   ```
+
+5. Deploy and confirm the domain under Vercel → Project Settings → Domains.
+
+If the generated domain is not available, rename the Vercel project to an available name. The `.vercel.app` hostname is based on the project name and is first-come, first-served.
+
+## License
+
+Personal portfolio source. Content, résumé, profile image, and project descriptions belong to Aarnav Jaiswal.

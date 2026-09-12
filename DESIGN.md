@@ -1,123 +1,132 @@
-# Redesign Spec — "README.md / Terminal" Portfolio
+# Design Spec — Aarnav Jaiswal Build Lab
 
-A redesign of the Soham Maury portfolio in a **developer / `README.md` / terminal**
-aesthetic, inspired by the `luvvv.me` reference. We keep the existing content,
-data, and multi-page routing (Home / Projects / Resources) but rebuild the visual
-language and layout shell.
-
----
+This portfolio uses a distinct “build lab” identity instead of the cloned README/terminal layout. It presents Aarnav as a student developer who is actively building, learning, and shipping useful products.
 
 ## 1. Concept
 
-The site reads like a developer's `README` rendered in a tool: monospace meta-text
-for "machine" chrome (breadcrumbs, readouts, footer, comments-as-UI), large neutral
-sans headings for human content, a calm warm-gray canvas, and subtle "blueprint"
-decoration (diagonal hatch dividers, dotted grids, skeleton loaders).
+The site should feel like a small independent studio: confident, direct, technical, and warm. The visual language combines:
 
-Code metaphors are part of the UI: `path / README.md` breadcrumbs, `// comments`,
-`thanks()` call-syntax links, a `⌘K` Command Bar as the primary navigation.
+- Editorial, oversized typography for the hero and contact moments.
+- Dark forest-green surfaces that feel more intentional than generic black.
+- Acid-lime accents for actions, availability, active states, and project signals.
+- Grid lines, grain, and soft orbital shapes as quiet “workbench” details.
+- Project cards that read like artifacts from an active build log.
 
-## 2. Layout shell (every page)
+The design does not use the source portfolio’s notch shell, sticky profile rail, README breadcrumbs, warm-gray blueprint canvas, or typing-test widget.
 
+## 2. Layout shell
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│ AJ   build / learn / ship       Home Projects   AVAILABLE  ◐ │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  AARNAV JAISWAL / PORTFOLIO 2026                            │
+│  Building                                                     │
+│  useful                                                       │
+│  things.                         short intro + CTAs           │
+│                                  résumé / let's talk           │
+│  01 full-stack   02 product-minded       scroll to work      │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│  02 projects     100+ problems       2027 graduation          │
+├──────────────────────────────────────────────────────────────┤
+│  // Skills                                                     │
+│  grouped technical chips                                      │
+│                                                              │
+│  // Education                                                  │
+│  academic entries                                             │
+│                                                              │
+│  // Projects                                                   │
+│  lime project visual | large project information              │
+│                                                              │
+│  // Achievements & Activities                                 │
+│  proof points                                                  │
+│                                                              │
+│  // Open channel                                               │
+│  high-contrast contact block                                  │
+├──────────────────────────────────────────────────────────────┤
+│ Have a good idea? Let's make it real.       links / copyright │
+└──────────────────────────────────────────────────────────────┘
 ```
-┌───────────────────────────────────────────────────────────────┐
-│  [ / Command Bar ]                              ⟳   ☀/☾        │  top bar
-├───────────────────────────────────────────────┬───────────────┤
-│  path / README.md            θ=0.00rad · IST   │  ┌─────────┐  │
-│  ▌ <PAGE HERO HEADING>                          │  │ profile │  │
-│    <subtitle>                                   │  └─────────┘  │
-│  ░░░░░░░░ hatch divider ░░░░░░░░░░░░░░░░░░░░░░  │  [GitHub  ↗]  │
-│                                                 │  [LinkedIn↗]  │
-│  <page content sections>                        │  [X       ↗]  │
-│                                                 │  [LeetCode↗]  │
-│  <typing-test widget>                           │  · · · dots   │
-├───────────────────────────────────────────────┴───────────────┤
-│  // Built with Next.js, Tailwind; thanks();   👁 You are …th   │  footer
-└───────────────────────────────────────────────────────────────┘
-```
 
-- **Top bar**: left = Command Bar pill (opens `⌘K` palette). Right = reload glyph +
-  theme toggle.
-- **Main column** (≈2fr): per-page hero (breadcrumb + big heading + subtitle), a
-  hatch divider, then page sections. Typing-test widget anchored near the bottom.
-- **Right sidebar** (≈1fr, hidden < `lg`): profile card on top, social link rows,
-  dotted-grid filler. Sticky on scroll.
-- **Footer**: monospace build credit with a `thanks()` link + static visitor counter.
+The shell is full-width, uses a centered `max-w-7xl` content frame, and avoids a desktop-only sidebar so the primary story remains readable on every viewport.
 
 ## 3. Design tokens
 
-### Color — light (default, matches reference)
-| token | value | use |
-|---|---|---|
-| background | `#f5f5f4` warm gray | canvas |
-| card | `#ffffff` | cards, sidebar tiles |
-| foreground | `#3f3f46` zinc-700 | headings (NOT pure black) |
-| muted-fg | `#71717a` zinc-500 | body, meta |
-| border | `#e7e5e4` stone-200 | hairlines, card borders |
-| accent | `#3b82f6` blue-500 | links, active state |
+### Light theme
 
-### Color — dark
-| token | value |
-|---|---|
-| background | `#0c0a09` near-black |
-| card | `#18181b` zinc-900 |
-| foreground | `#fafafa` |
-| muted-fg | `#a1a1aa` zinc-400 |
-| border | `#27272a` zinc-800 |
-| accent | `#60a5fa` blue-400 |
+| Token | Value | Use |
+| --- | --- | --- |
+| Background | `hsl(48 33% 96%)` | Warm parchment canvas |
+| Foreground | `hsl(160 22% 12%)` | Deep green-black text |
+| Card | `hsl(45 33% 99%)` | Project and hero surfaces |
+| Muted | `hsl(160 8% 43%)` | Supporting copy and metadata |
+| Border | `hsl(40 13% 82%)` | Rules and card edges |
+| Accent | `hsl(73 100% 48%)` | Lime actions and signals |
 
-Brand colors on social icons are preserved in both themes.
+### Dark theme
+
+| Token | Value | Use |
+| --- | --- | --- |
+| Background | `hsl(160 22% 7%)` | Forest-green-black canvas |
+| Foreground | `hsl(48 33% 96%)` | Warm white text |
+| Card | `hsl(160 18% 10%)` | Elevated surfaces |
+| Muted | `hsl(155 8% 64%)` | Supporting copy |
+| Border | `hsl(160 12% 20%)` | Low-contrast rules |
+| Accent | `hsl(73 100% 57%)` | Lime actions and signals |
 
 ### Type
-- `--font-sans` = Open Sans (existing local VF) → body + big hero headings, tight tracking.
-- `--font-mono` = `ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace` →
-  breadcrumbs, readouts, footer, tags, typing test, command bar.
-- Hero heading: `text-5xl`–`text-7xl`, `font-bold`, `tracking-tight`, foreground (dark gray).
-- Meta text: `text-xs`/`text-sm`, mono, `muted-fg`, often `uppercase tracking-wide`.
 
-### Decoration (utilities in globals.css)
-- `.bg-dots` — `radial-gradient(circle, border 1px, transparent 1px)` 16px grid.
-- `.hatch` — `repeating-linear-gradient(45deg, border 0 1px, transparent 1px 6px)`
-  used as a thin divider band.
-- `.skeleton` — muted rounded block, used inside the profile card placeholder + content stubs.
-
-### Radius / shadow
-- Cards: `rounded-xl border` (hairline), very soft shadow on hover only.
-- Pills (command bar, tags): `rounded-md` mono.
+- Open Sans variable font remains the primary UI font.
+- `display-type` uses tighter tracking and heavy weights for the editorial hero.
+- Mono text is reserved for labels, numbers, availability, stack tags, and small metadata.
+- Headlines use short phrases and intentional line breaks rather than long résumé-style sentences.
 
 ## 4. Components
 
-| component | role | state |
-|---|---|---|
-| `shell/TopBar` | command-bar pill + reload + theme toggle | client |
-| `shell/CommandBar` | **functional** `⌘K` palette: nav, links, theme | client |
-| `shell/Sidebar` | profile card + social rows + dots | server |
-| `shell/Footer` | build credit + **static** visitor counter | server |
-| `shell/Breadcrumb` | `domain / FILE.md` path line + static readout | server |
-| `ui/Hatch` | hatch divider band | server |
-| `TypingTest` | "Pack my box…" widget, **static/placeholder** | client |
-| restyle | Header→Hero, About, Projects, Experience, Skill, Contact, all cards | — |
+| Component | Role |
+| --- | --- |
+| `StudioNavbar` | Minimal sticky navigation, availability indicator, command bar, and theme toggle. |
+| `Header` | Split hero with a large statement, personal intro, résumé CTA, and project anchor. |
+| `Snapshot` | Three quick proof points: shipped projects, algorithm practice, and graduation target. |
+| `Title` | Editorial section rule with a compact `//` marker. |
+| `ProjectCard` | Two-column project artifact with lime visual panel, metadata, description, and links. |
+| `Education` | Academic background presented as a clean timeline-like list. |
+| `Achievements` | Compact proof points for problem-solving, hackathon work, and workshops. |
+| `Contact` | Dark high-contrast open-channel block with social links. |
+| `StudioFooter` | Lightweight closing CTA and social links. |
 
-### Command Bar (functional)
-- Opens on `⌘K` / `Ctrl-K` or click. Modal with mono input + grouped results:
-  **Pages** (Home, Projects, Resources), **Links** (GitHub, LinkedIn, X, email),
-  **Actions** (Toggle theme). Arrow-key navigation, `Enter` to run, `Esc` to close.
+## 5. Interaction principles
 
-### Typing test (static for now)
-- Renders the prompt sentence + a focusable input + `TAB new sentence` / `restart`
-  hints. Visual only — no scoring/WPM yet (placeholder for a later pass).
+- Actions move slightly on hover to make the interface feel physical without being noisy.
+- Project cards use a lime offset shadow on hover to reinforce the build-artifact metaphor.
+- Navigation is intentionally small; the page itself carries the visual weight.
+- Theme switching remains available, but both themes use the same forest/lime identity.
+- Keyboard access remains supported through the command palette and semantic links/buttons.
 
-### Visitor counter (static for now)
-- `👁 You are the 1,024th visitor` — hardcoded number, wired to swap for a real
-  Supabase/KV count later.
+## 6. Content architecture
 
-## 5. Pages
-- **Home**: hero ("Heyy! I'm Soham Maury" + tagline) → hatch → About → Projects
-  (2-col cards) → Experience → Skills (mono tag chips) → TypingTest. Contact lives
-  in the sidebar/footer social.
-- **Projects**: hero `… / projects.md`, full project grid + upcoming, restyled cards.
-- **Resources**: hero `… / resources.md`, Notion resource cards in the new style.
+The visual system is data-driven from `constants/index.ts`:
 
-## 6. Non-goals (this pass)
-- Real visitor backend, typing WPM scoring, the live θ/clock readout (kept static).
-- These are intentionally stubbed with clear swap points.
+- `Site` controls identity, role, location, avatar, résumé, and canonical URL.
+- `Socials` controls contact destinations.
+- `SkillGroups` controls the skill clusters.
+- `Education` controls academic entries.
+- `Achievements` controls proof points.
+- `Projects` controls selected work and the full project explorer.
+
+The experience array is intentionally empty until professional experience exists. The page emphasizes real projects and learning rather than placeholder employment history.
+
+## 7. SEO and deployment
+
+`app/layout.tsx` generates metadata and JSON-LD from the same site constants used by the UI. Set `NEXT_PUBLIC_SITE_URL` to the deployed origin, for example `https://aarnav2k5.vercel.app`.
+
+The URL parser treats empty or malformed environment values as unset and falls back to a valid placeholder, preventing `new URL("")` from breaking Vercel’s build-time page collection.
+
+## 8. Non-goals
+
+- No CMS or database-backed content editor.
+- No invented employment history.
+- No copied layout shell from the original repository.
+- No large animation system that delays first contentful paint.
