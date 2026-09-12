@@ -4,7 +4,7 @@ import { HomeIcon, LaptopMinimal, Mail } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/ui/brand-icons";
+import { GitHubIcon, LinkedInIcon } from "@/components/ui/brand-icons";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -26,16 +26,15 @@ const DATA = {
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://github.com/itzsoham",
+        url: "https://github.com/aarnav2k5",
         icon: GitHubIcon,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/sohammaury/",
+        url: "https://www.linkedin.com/in/aarnav-jaiswal-2k5/",
         icon: LinkedInIcon,
       },
-      X: { name: "X", url: "https://x.com/sohammaury", icon: XIcon },
-      email: { name: "Email", url: "mailto:sohammaury@gmail.com", icon: Mail },
+      email: { name: "Email", url: "mailto:jaiswalaarnav@gmail.com", icon: Mail },
     },
   },
 };

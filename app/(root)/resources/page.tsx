@@ -9,14 +9,14 @@ import Title from "@/components/ui/Title";
 import { Resources as ResourcesData } from "@/constants";
 
 const description =
-  "A collected set of developer resources — learning tracks, useful sites, GitHub and job-hunt guides, and design references — gathered by Soham Maury.";
+  "A collected set of developer resources curated by Aarnav Jaiswal.";
 
 export const metadata: Metadata = {
   title: "Resources",
   description,
   alternates: { canonical: "/resources" },
   openGraph: {
-    title: "Resources — Soham Maury",
+    title: "Resources — Aarnav Jaiswal",
     description,
     url: "/resources",
   },

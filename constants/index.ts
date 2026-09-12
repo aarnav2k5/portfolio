@@ -10,10 +10,16 @@ export interface linksType {
   link: string;
 }
 
+const FALLBACK_SITE_URL = "https://aarnav-jaiswal.dev";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+const siteUrl = configuredSiteUrl?.match(/^https?:\/\//)
+  ? configuredSiteUrl
+  : FALLBACK_SITE_URL;
+
 export const Site = {
   name: "Aarnav Jaiswal",
-  domain: "aarnav-jaiswal.dev",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://aarnav-jaiswal.dev",
+  domain: new URL(siteUrl).host,
+  url: siteUrl,
   role: "Full-Stack Developer",
   tagline:
     "Final-year B.Tech CSIT student building full-stack web products with React, Next.js, Node.js, Express, PostgreSQL, and MongoDB.",

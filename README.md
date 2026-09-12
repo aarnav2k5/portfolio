@@ -1,6 +1,6 @@
-# Soham Maury — Portfolio
+# Aarnav Jaiswal — Portfolio
 
-[itzsoham.vercel.app](https://itzsoham.vercel.app) — a personal portfolio styled as a developer `README.md` rendered in a terminal: monospace meta-text for the shell (breadcrumbs, footer, tags), large sans headings for content, a functional `⌘K` command palette, and no CMS — every piece of content lives in one file.
+Aarnav Jaiswal's personal portfolio — a full-stack student portfolio focused on shipped projects, education, and open-source learning.
 
 ## Features
 
@@ -78,7 +78,7 @@ Copy `.env.example` to `.env.local`. Everything is optional — the site runs fi
 
 | Variable                                              | Required for                     | Fallback if unset                                                 |
 | ----------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`                                | canonical URLs, OG tags, sitemap | `https://itzsoham.vercel.app` (hardcoded in `constants/index.ts`) |
+| `NEXT_PUBLIC_SITE_URL`                                | canonical URLs, OG tags, sitemap | Set this to your Vercel URL in deployment settings |
 | `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | real visitor counter             | static `Site.visitorCount` number in the footer                   |
 
 ### Wiring up the visitor counter
