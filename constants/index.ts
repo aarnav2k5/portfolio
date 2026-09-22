@@ -42,9 +42,24 @@ export interface SocialLink {
 }
 
 export const Socials: SocialLink[] = [
-  { name: "GitHub", url: "https://github.com/aarnav2k5", icon: GitHubIcon, color: "#181717" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/aarnav-jaiswal-2k5/", icon: LinkedInIcon, color: "#0A66C2" },
-  { name: "Email", url: "mailto:jaiswalaarnav@gmail.com", icon: Mail, color: "#3b82f6" },
+  {
+    name: "GitHub",
+    url: "https://github.com/aarnav2k5",
+    icon: GitHubIcon,
+    color: "#181717",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/aarnav-jaiswal-2k5/",
+    icon: LinkedInIcon,
+    color: "#0A66C2",
+  },
+  {
+    name: "Email",
+    url: "mailto:jaiswalaarnav@gmail.com",
+    icon: Mail,
+    color: "#3b82f6",
+  },
   { name: "Phone", url: "tel:+919650020617", icon: Phone, color: "#16a34a" },
 ];
 
@@ -82,7 +97,8 @@ export const Education: EducationEntry[] = [
     location: "Ghaziabad, India",
     program: "B.Tech in Computer Science and Information Technology (CSIT)",
     period: "Oct 2023 – Oct 2027",
-    details: "Coursework: Data Structures & Algorithms, OOP, Databases, Operating Systems, Computer Networks",
+    details:
+      "Coursework: Data Structures & Algorithms, OOP, Databases, Operating Systems, Computer Networks",
   },
   {
     institution: "Bal Bharati Public School",
@@ -105,10 +121,35 @@ export interface SkillGroup {
 }
 
 export const SkillGroups: SkillGroup[] = [
-  { label: "Frontend", skills: ["React.js", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Bootstrap", "shadcn/ui", "HTML5", "CSS3"] },
+  {
+    label: "Frontend",
+    skills: [
+      "React.js",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
+      "Tailwind CSS",
+      "Bootstrap",
+      "shadcn/ui",
+      "HTML5",
+      "CSS3",
+    ],
+  },
   { label: "Backend & APIs", skills: ["Node.js", "Express.js", "REST APIs"] },
   { label: "Databases", skills: ["MongoDB", "SQL", "PostgreSQL", "Supabase"] },
-  { label: "AI, Tools & Platforms", skills: ["LLM APIs", "Groq", "Qdrant", "Hugging Face", "Git", "GitHub", "Vercel", "Docker"] },
+  {
+    label: "AI, Tools & Platforms",
+    skills: [
+      "LLM APIs",
+      "Groq",
+      "Qdrant",
+      "Hugging Face",
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Docker",
+    ],
+  },
 ];
 
 export const Skills = SkillGroups.flatMap((g) => g.skills);
@@ -128,17 +169,26 @@ export const Projects: ProjectEntry[] = [
   {
     title: "Gurukul",
     tagline: "Tuition resource library for teachers and students",
-    description: "A full-stack resource library with role-based teacher and student workflows for managing chapter notes, previous-year questions, sample papers, and marking schemes. Includes guided browsing, search filters, Supabase Auth, PostgreSQL Row Level Security, public downloads, duplicate-file detection, soft-delete and restore, upload progress, and realtime presence.",
-    tags: ["Next.js", "TypeScript", "React", "Supabase", "Docker", "Tailwind CSS"],
+    description:
+      "A full-stack resource library with role-based teacher and student workflows for managing chapter notes, previous-year questions, sample papers, and marking schemes. Includes guided browsing, search filters, Supabase Auth, PostgreSQL Row Level Security, public downloads, duplicate-file detection, soft-delete and restore, upload progress, and realtime presence.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Supabase",
+      "Docker",
+      "Tailwind CSS",
+    ],
     codeHref: "https://github.com/aarnav2k5/gurukul",
-    liveHref: "https://lms-hqzf.onrender.com/",
+    liveHref: "https://gurukul-v1.vercel.app/",
     preview: "library",
     category: "Web",
   },
   {
     title: "Civic Report",
     tagline: "Crowdsourced platform for reporting local civic issues",
-    description: "A full-stack platform that lets citizens report and track issues such as broken roads, garbage, and waterlogging with location tagging and status updates. Includes realtime notifications, toast feedback, and a fast Next.js App Router deployment on Vercel.",
+    description:
+      "A full-stack platform that lets citizens report and track issues such as broken roads, garbage, and waterlogging with location tagging and status updates. Includes realtime notifications, toast feedback, and a fast Next.js App Router deployment on Vercel.",
     tags: ["Next.js", "TypeScript", "React", "Tailwind CSS", "shadcn/ui"],
     codeHref: "https://github.com/aarnav2k5/civic-report",
     liveHref: "https://civic-report-five.vercel.app/",
@@ -147,4 +197,5 @@ export const Projects: ProjectEntry[] = [
   },
 ];
 
-export const Resources: { title: string; description: string; link: string }[] = [];
+export const Resources: { title: string; description: string; link: string }[] =
+  [];
